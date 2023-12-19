@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadXml {
+    /*Поле из списка объектов, которые мы вытаскиваем из файла*/
     private static ArrayList<Object> objects = new ArrayList<>();
-
+   /* понять различие между == и equals */
 
     public static class XMLHandler extends DefaultHandler {
         @Override
@@ -26,6 +27,7 @@ public class ReadXml {
     }
 
     public static List<String> getAddress(String date, List<String> objectIds) {
+        // создание пустого списка
         List<String> address = new ArrayList<>();
         for (Object obj : objects) {
             String startDate = obj.getStartDate();
@@ -44,6 +46,7 @@ public class ReadXml {
       Этот метод возвращает '0', если обе даты равны, возвращает значение "больше 0",
       если date1 идет после date2, и возвращает значение "меньше 0",
       если date1 идет до date2.
+      + есть еще способ сравнения через equals а также через before и after
      */
     private static boolean isDateInRange(String startDate, String endDate, String targetDate) {
         return startDate.compareTo(targetDate) <= 0 && endDate.compareTo(targetDate) >= 0;
